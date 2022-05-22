@@ -9,12 +9,14 @@ const Tools = () => {
     const navigate = useNavigate()
     const [user] = useAuthState(auth)
 
-    const { data:tools, isLoading ,refetch} = useQuery('tools', () => fetch('http://localhost:4000/products').then(res => res.json()))
+    const { data:products, isLoading ,refetch} = useQuery('tools', () => fetch('http://localhost:4000/products').then(res => res.json()))
     // console.log(tools);
 
     if (isLoading) {
         return <Loading></Loading>
     }
+
+    const tools = products.slice(0,6)
 
     const hendelparchas = tool =>{
       navigate(`/purchase/${tool._id}`)
