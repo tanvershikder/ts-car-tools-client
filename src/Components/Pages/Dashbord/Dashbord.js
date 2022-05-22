@@ -1,7 +1,13 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { Outlet, Link } from 'react-router-dom';
+import auth from '../../../Firebase.init';
+import UseAdmin from '../../Hooks/UseAdmin';
 
 const Dashbord = () => {
+    const [user] = useAuthState(auth)
+    const [admin] = UseAdmin(user)
+    console.log(user);
     return (
         <div className="drawer drawer-mobile">
             <input id="dashbord-slider" type="checkbox" className="drawer-toggle" />
@@ -13,13 +19,23 @@ const Dashbord = () => {
             <div className="drawer-side">
                 <label htmlFor="dashbord-slider" className="drawer-overlay"></label>
                 <ul className="menu p-4 overflow-y-auto w-48 bg-base-100 text-base-content">
-                <li><a>My Orders</a></li>
-                    <li><a>Add Review</a></li>
-                    <li><a>My Profile</a></li>
-                    <li><a>Manage All Orders</a></li>
-                    <li><a>Add Products</a></li>
-                    <li><a>Make an Admin</a></li>
-                    <li><a>Manage Products</a></li>
+                    <li><Link to='myprofile'>My profile</Link></li>
+                    {
+                        !admin && <>
+
+                            <li><Link to='myorders'>My Orders</Link></li>
+                            <li><a>Add Review</a></li>
+                        </>
+                    }
+                    {
+                        admin && <>
+                            <li><Link to='manageAllorders'>Manage All Orders</Link></li>
+                            <li><Link to='addproducts'>Add Products</Link></li>
+                            <li><Link to='makeAdmin'>Make an Admin</Link></li>
+                            <li><a>Manage Products</a></li>
+                        </>
+
+                    }
                 </ul>
 
             </div>
