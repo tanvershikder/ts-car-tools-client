@@ -1,12 +1,15 @@
 import { async } from '@firebase/util';
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
+import auth from '../../../Firebase.init';
 
 const AddReview = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const imagestorage_key = '8c9e657645bc7264c5c4e9c24848e699';
-
+    const [user] = useAuthState(auth)
+console.log(user);
     const onSubmit = async (data) => {
 
         const formData = new FormData();
@@ -25,7 +28,10 @@ const AddReview = () => {
                     const review ={
                         review : data.review,
                         ratings : data.ratings,
-                        img : img
+                        img : img,
+                        name:user.displayName,
+                        email:user.email
+
                     }
                     console.log(review);
 
@@ -95,7 +101,7 @@ const AddReview = () => {
                 </div>
 
                 <div className='form-control w-full max-w-xs'>
-                    <label for="files" class="btn max-w-lg">Upload Image</label>
+                    <label for="files" className="btn w-full max-w-xs m-3">Upload Your Image</label>
                     <input
                         type="file"
                         id="files"
@@ -115,7 +121,7 @@ const AddReview = () => {
 
 
                 <div className='form-control w-full max-w-xs'>
-                    <input type="submit" placeholder="Type here" class="btn btn-primary w-full max-w-lg m-3" />
+                    <input type="submit" placeholder="Type here" className="btn btn-primary w-full max-w-lg m-3" />
                 </div>
 
 

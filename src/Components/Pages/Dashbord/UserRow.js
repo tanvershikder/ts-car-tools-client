@@ -36,7 +36,7 @@ const UserRow = ({ user, refetch, setDeleteUser,index }) => {
                         <button onClick={hendelMakeAdmin} className="btn">make Admin</button>
                     }
                 </td>
-                <td><label onClick={() => setDeleteUser(user)} for="user-modal" class="btn modal-button btn-xs  btn-error">Delete</label></td>
+                <td><label onClick={() => setDeleteUser(user)} for="user-modal" className="btn modal-button btn-xs  btn-error">Delete</label></td>
             </tr>
     );
 };

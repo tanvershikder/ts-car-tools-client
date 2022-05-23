@@ -20,10 +20,13 @@ import AllUsers from './Components/Pages/Dashbord/AllUsers';
 import RequireAdmin from './Components/Hooks/RequireAdmin';
 import ManageProducts from './Components/Pages/Dashbord/ManageProducts';
 import AddReview from './Components/Pages/Dashbord/AddReview';
+import ManageReview from './Components/Pages/Dashbord/ManageReview';
+import NotFound from './Components/Shared/NotFound';
+import Payment from './Components/Pages/Dashbord/Payment';
 
 function App() {
   return (
-    <div className='lg:px-12'>
+    <div >
       <Navbar></Navbar>
 
       <Routes>
@@ -39,6 +42,7 @@ function App() {
           </RequireAuth>
         }>
           <Route index element={<MyProfile></MyProfile>}></Route>
+          <Route path='payment/:orderid' element={<Payment></Payment>} />
           <Route path='addproducts' element={
             <RequireAdmin>
               <AddProducts></AddProducts>
@@ -62,10 +66,16 @@ function App() {
               <ManageProducts></ManageProducts>
             </RequireAdmin>
           }></Route>
+          <Route path='manageReview' element={
+            <RequireAdmin>
+              <ManageReview></ManageReview>
+            </RequireAdmin>
+          }></Route>
         </Route>
         <Route path='/blogs' element={<Blogs></Blogs>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/signup' element={<Signup></Signup>}></Route>
+        <Route path='*' element={<NotFound></NotFound>}></Route>
 
       </Routes>
 

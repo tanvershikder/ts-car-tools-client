@@ -105,26 +105,26 @@ const PurchacsTools = () => {
 
     return (
         <div className='flex justify-center items-center lg:my-10'>
-            <div class="card card-compact w-96 bg-base-100 shadow-xl">
+            <div className="card card-compact w-96 bg-base-100 shadow-xl">
                 <figure><img src={tool.img} alt="Shoes" /></figure>
-                <div class="card-body">
-                    <h2 class="card-title">{tool.name}</h2>
+                <div className="card-body">
+                    <h2 className="card-title">{tool.name}</h2>
                     <p>{tool.decreption}</p>
                     <p>Price :{tool.price}</p>
                     <p>Available :{tool?.quantity} Pices</p>
                     <form onSubmit={heldelBuy}>
-                        <input type="text" name='name' ref={NameRef} placeholder="User Name" class="input input-bordered w-full max-w-xs my-3" value={user.displayName} disabled />
-                        <input type="text" name='email' ref={EmailRef} placeholder="user email" class="input input-bordered w-full max-w-xs my-3" value={user.email} disabled />
-                        <input type="text" name='quantity' defaultValue={minimum} ref={QuantityRef} placeholder={`Enter buying Quantity more then ${minimum} pices`} class="input input-bordered w-full max-w-xs my-3" required />
+                        <input type="text" name='name' ref={NameRef} placeholder="User Name" className="input input-bordered w-full max-w-xs my-3" value={user.displayName} disabled />
+                        <input type="text" name='email' ref={EmailRef} placeholder="user email" className="input input-bordered w-full max-w-xs my-3" value={user.email} disabled />
+                        <input type="text" name='quantity' defaultValue={minimum} ref={QuantityRef} placeholder={`Enter buying Quantity more then ${minimum} pices`} className="input input-bordered w-full max-w-xs my-3" required />
                         <p className="text-red-500">{error}</p>
-                        <input type="text" name='location' ref={LocationRef} placeholder="Add Location" class="input input-bordered w-full max-w-xs my-3" required />
-                        <input type="text" name='phone' ref={PhoneRef} placeholder="Phone Number" class="input input-bordered w-full max-w-xs my-3" required />
-                        <div class="card-actions justify-end">
+                        <input type="text" name='location' ref={LocationRef} placeholder="Add Location" className="input input-bordered w-full max-w-xs my-3" required />
+                        <input type="text" name='phone' ref={PhoneRef} placeholder="Phone Number" className="input input-bordered w-full max-w-xs my-3" required />
+                        <div className="card-actions justify-end">
                             {(Number(tool?.quantity) < minimum)
                                 ?
-                                <Link to='/' class= "btn btn-primary" >out of stock</Link>
+                                <Link to='/' className= "btn btn-primary" >out of stock</Link>
                                 :
-                                <button class="btn btn-primary" >Confirm order</button>}
+                                <button className="btn btn-primary" >Confirm order</button>}
                         </div>
                     </form>
                 </div>

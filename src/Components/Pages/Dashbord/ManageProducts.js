@@ -33,8 +33,8 @@ const ManageProducts = () => {
     return (
         <div>
             <h3 className="text-2xl text-primary">this manager products {products?.length}</h3>
-            <div class="overflow-x-auto">
-                <table class="table w-full">
+            <div className="overflow-x-auto">
+                <table className="table w-full">
                     <thead>
                         <tr>
                             <th></th>

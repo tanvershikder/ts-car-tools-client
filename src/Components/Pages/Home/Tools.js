@@ -10,13 +10,13 @@ const Tools = () => {
     const [user] = useAuthState(auth)
 
     const { data:products, isLoading ,refetch} = useQuery('tools', () => fetch('http://localhost:4000/products').then(res => res.json()))
-    console.log(products);
+    // console.log(products);
 
     if (isLoading) {
         return <Loading></Loading>
     }
 
-    const tools = products.slice(0,6)
+    const tools = products?.slice(0,6)
     const quantity = Number
 
     const hendelparchas = tool =>{
@@ -25,16 +25,16 @@ const Tools = () => {
       console.log(user);
     }
     return (
-        <div>
+        <div className='lg:px-12 lg:m-5'>
             <h2 className="text-2xl text-secondary font-bold text-center py-5 ">Get Car Repair Tools </h2>
             <div className='grid grid-cols-1 lg:grid-cols-3 gap-4'>
                 {
-                  tools?.map(tool=><div class="lg:max-w-lg bg-base-100 shadow-xl">
-                  <figure class="px-10 pt-10">
-                    <img src={tool.img} alt="Shoes" class="rounded-xl h-48" />
+                  tools?.map(tool=><div key={tool._id} className="lg:max-w-lg bg-base-100 shadow-xl">
+                  <figure className="px-10 pt-10">
+                    <img src={tool.img} alt="Shoes" className="rounded-xl h-48" />
                   </figure>
-                  <div class="card-body items-center text-center">
-                    <h2 class="card-title">{tool.name}</h2>
+                  <div className="card-body items-center text-center">
+                    <h2 className="card-title">{tool.name}</h2>
                     <p>{tool.decreption}</p>
                     <p>{tool.price}</p>
                     <p>{tool.quantity}</p>
@@ -43,12 +43,12 @@ const Tools = () => {
                       &&
                       <p className='text-yellow-800 font-bold'>Out of stock</p>
                     }
-                    <div class="card-actions">
+                    <div className="card-actions">
                       {(Number(tool?.quantity) < Number(tool?.minimum))
                                 ?
-                                <button class="btn btn-primary" >Try Later</button>
+                                <button className="btn btn-primary" >Try Later</button>
                                 :
-                                <button class="btn btn-primary"  onClick={()=>hendelparchas(tool)}>Purchas</button> 
+                                <button className="btn btn-primary"  onClick={()=>hendelparchas(tool)}>Purchas</button> 
                       }
                     </div>
                   </div>

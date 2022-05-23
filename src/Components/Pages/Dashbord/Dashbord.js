@@ -12,19 +12,18 @@ const Dashbord = () => {
         <div className="drawer drawer-mobile">
             <input id="dashbord-slider" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content ">
-                <h2 className='text-3xl font-bold text-purple-500 p-5'>Welcome to your Dashbord</h2>
                 <Outlet></Outlet>
 
             </div>
             <div className="drawer-side">
                 <label htmlFor="dashbord-slider" className="drawer-overlay"></label>
                 <ul className="menu p-4 overflow-y-auto w-48 bg-base-100 text-base-content">
-                    <li><Link to='myprofile'>My profile</Link></li>
+                    <li><Link to='/dashbord'>My profile</Link></li>
                     {
                         !admin && <>
 
-                            <li><Link to='myorders'>My Orders</Link></li>
-                            <li><Link to='addreview'>Add Review</Link></li>
+                            <li><Link to='/dashbord/myorders'>My Orders</Link></li>
+                            <li><Link to='/dashbord/addreview'>Add Review</Link></li>
                         </>
                     }
                     {
@@ -33,6 +32,7 @@ const Dashbord = () => {
                             <li><Link to='addproducts'>Add Products</Link></li>
                             <li><Link to='makeAdmin'>Make an Admin</Link></li>
                             <li><Link to='manageProducts'>Manage Products</Link></li>
+                            <li><Link to='manageReview'>Manage Review</Link></li>
                         </>
 
                     }
