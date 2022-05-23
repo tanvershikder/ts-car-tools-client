@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../../Firebase.init';
 import Loading from '../../Shared/Loading'
@@ -20,6 +20,7 @@ const PurchacsTools = () => {
 
 
     let updatequantity = Number(tool?.quantity);
+    const minimum = Number(tool?.minimum)
 
     const heldelBuy = (event) => {
         event.preventDefault()
@@ -44,8 +45,8 @@ const PurchacsTools = () => {
 
         console.log(bookingDetails);
 
-        if (newQuantity < 100) {
-            setError("please order more then 100 price")
+        if (newQuantity < minimum) {
+            setError(`please order more then ${minimum} pice`)
             return
         }
         if (newQuantity > updatequantity) {
@@ -76,7 +77,7 @@ const PurchacsTools = () => {
                 })
 
             // post order
-            
+
             fetch('http://localhost:4000/orders', {
                 method: 'POST',
                 headers: {
@@ -114,12 +115,16 @@ const PurchacsTools = () => {
                     <form onSubmit={heldelBuy}>
                         <input type="text" name='name' ref={NameRef} placeholder="User Name" class="input input-bordered w-full max-w-xs my-3" value={user.displayName} disabled />
                         <input type="text" name='email' ref={EmailRef} placeholder="user email" class="input input-bordered w-full max-w-xs my-3" value={user.email} disabled />
-                        <input type="text" name='quantity' ref={QuantityRef} placeholder="Enter buying Quantity more then 100 pices" class="input input-bordered w-full max-w-xs my-3" required />
+                        <input type="text" name='quantity' defaultValue={minimum} ref={QuantityRef} placeholder={`Enter buying Quantity more then ${minimum} pices`} class="input input-bordered w-full max-w-xs my-3" required />
                         <p className="text-red-500">{error}</p>
                         <input type="text" name='location' ref={LocationRef} placeholder="Add Location" class="input input-bordered w-full max-w-xs my-3" required />
                         <input type="text" name='phone' ref={PhoneRef} placeholder="Phone Number" class="input input-bordered w-full max-w-xs my-3" required />
                         <div class="card-actions justify-end">
-                            <button class="btn btn-primary" >Confirm order</button>
+                            {(Number(tool?.quantity) < minimum)
+                                ?
+                                <Link to='/' class= "btn btn-primary" >out of stock</Link>
+                                :
+                                <button class="btn btn-primary" >Confirm order</button>}
                         </div>
                     </form>
                 </div>

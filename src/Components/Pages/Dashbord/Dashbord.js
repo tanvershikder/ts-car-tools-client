@@ -24,7 +24,7 @@ const Dashbord = () => {
                         !admin && <>
 
                             <li><Link to='myorders'>My Orders</Link></li>
-                            <li><a>Add Review</a></li>
+                            <li><Link to='addreview'>Add Review</Link></li>
                         </>
                     }
                     {
@@ -32,7 +32,7 @@ const Dashbord = () => {
                             <li><Link to='manageAllorders'>Manage All Orders</Link></li>
                             <li><Link to='addproducts'>Add Products</Link></li>
                             <li><Link to='makeAdmin'>Make an Admin</Link></li>
-                            <li><a>Manage Products</a></li>
+                            <li><Link to='manageProducts'>Manage Products</Link></li>
                         </>
 
                     }

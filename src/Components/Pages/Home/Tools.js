@@ -10,13 +10,14 @@ const Tools = () => {
     const [user] = useAuthState(auth)
 
     const { data:products, isLoading ,refetch} = useQuery('tools', () => fetch('http://localhost:4000/products').then(res => res.json()))
-    // console.log(tools);
+    console.log(products);
 
     if (isLoading) {
         return <Loading></Loading>
     }
 
     const tools = products.slice(0,6)
+    const quantity = Number
 
     const hendelparchas = tool =>{
       navigate(`/purchase/${tool._id}`)
@@ -38,12 +39,17 @@ const Tools = () => {
                     <p>{tool.price}</p>
                     <p>{tool.quantity}</p>
                     {
-                      tool.quantity<100
+                      Number(tool?.quantity) < Number(tool?.minimum)
                       &&
-                      <p className='text-yellow-400 font-bold'>Out of stock</p>
+                      <p className='text-yellow-800 font-bold'>Out of stock</p>
                     }
                     <div class="card-actions">
-                      <button class={tool.quantity<100 ? "btn-disabled" :"btn btn-primary"}  onClick={()=>hendelparchas(tool)}>Purchas</button>
+                      {(Number(tool?.quantity) < Number(tool?.minimum))
+                                ?
+                                <button class="btn btn-primary" >Try Later</button>
+                                :
+                                <button class="btn btn-primary"  onClick={()=>hendelparchas(tool)}>Purchas</button> 
+                      }
                     </div>
                   </div>
                 </div>)  

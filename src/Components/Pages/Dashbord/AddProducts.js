@@ -32,6 +32,7 @@ const AddProducts = () => {
                     name : data.name,
                     decreption : data.decreption,
                     quantity : data.quantity,
+                    minimum : data.minimum,
                     price : data.price,
                     img : img
                 }
@@ -145,6 +146,26 @@ const AddProducts = () => {
                     />
                     <label className="label">
                         {errors.quantity?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name.message}</span>}
+                    </label>
+                </div>
+                <div className="form-control w-full max-w-xs">
+                    <label className="label">
+                        <span className="label-text text-base font-semibold">Minumum order Quantity</span>
+                    </label>
+                    <input
+                        type="number"
+                        placeholder="Enter minimum order Quantity"
+                        className="input input-bordered w-full max-w-xs"
+
+                        {...register("minimum", {
+                            required: {
+                                value: true,
+                                message: 'Quantity is Required'
+                            }
+                        })}
+                    />
+                    <label className="label">
+                        {errors.minimum?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name.message}</span>}
                     </label>
                 </div>
 
