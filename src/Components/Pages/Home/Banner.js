@@ -1,32 +1,29 @@
 import React from 'react';
+import slider1 from '../../../Images/slider1.jpg'
+import slider2 from '../../../Images/slider2.jpg'
+import slider3 from '../../../Images/slider3.webp'
 
 const Banner = () => {
     return (
         <div>
             <div className="carousel w-full">
-                <div id="slide1" className="carousel-item relative w-full">
-                    <img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/wrenches-set-in-the-workshop-royalty-free-image-1625006357.jpg" className="w-full"/> 
-                        <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                            <a href="#slide4" className="btn btn-circle">❮</a>
-                            <a href="#slide2" className="btn btn-circle">❯</a>
-                        </div>
+                <div id="item1" className="carousel-item w-full">
+                    <img src={slider1} className="w-full" />
                 </div>
-                <div id="slide2" className="carousel-item relative w-full">
-                    <img src="https://www.industrybuying.com/wp-content/uploads/2016/12/car-tool-kit-640x300.jpg" className="w-full"/> 
-                        <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                            <a href="#slide1" className="btn btn-circle">❮</a>
-                            <a href="#slide3" className="btn btn-circle">❯</a>
-                        </div>
+                <div id="item2" className="carousel-item w-full">
+                    <img src={slider2} className="w-full" />
                 </div>
-                <div id="slide3" className="carousel-item relative w-full">
-                    <img src="https://st2.depositphotos.com/3765753/6935/i/950/depositphotos_69357071-stock-photo-different-car-repair-tools-set.jpg" className="w-full"/> 
-                        <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                            <a href="#slide2" className="btn btn-circle">❮</a>
-                            <a href="#slide4" className="btn btn-circle">❯</a>
-                        </div>
+                <div id="item3" className="carousel-item w-full">
+                    <img src={slider3} className="w-full" />
                 </div>
             </div>
+            <div className="flex justify-center w-full py-2 gap-2">
+                <a href="#item1" className="btn btn-xs">1</a>
+                <a href="#item2" className="btn btn-xs">2</a>
+                <a href="#item3" className="btn btn-xs">3</a>
+            </div>
         </div>
+
     );
 };
 

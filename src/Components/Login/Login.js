@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import auth from '../../Firebase.init';
 import { useSignInWithGoogle,useSignInWithEmailAndPassword, useSendPasswordResetEmail } from 'react-firebase-hooks/auth';
@@ -9,7 +9,7 @@ import UseToken from '../Hooks/UseToken';
 import { toast } from 'react-toastify';
 
 const Login = () => {
-
+    const [showpass, setShowpass] = useState(false);
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
     const { register, formState: { errors }, handleSubmit,getValues  } = useForm();
 
@@ -109,7 +109,7 @@ const Login = () => {
                                 <span className="label-text text-base font-semibold">Password</span>
                             </label>
                             <input
-                                type="password"
+                                type={showpass ? "text" : "password"}
                                 placeholder="Enter Your Password"
                                 className="input input-bordered w-full max-w-xs"
 
@@ -129,6 +129,7 @@ const Login = () => {
                                 {errors.password?.type === 'minLength' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
                             </label>
                         </div>
+                        <input type="checkbox" name="" id="" onClick={() => setShowpass(!showpass)} /> <span>see password</span>
 
                         {signInerror}
                         <p className='text-yellow-400 m-3 cursor-pointer' onClick={hendelForgetPssword}>forget Password?</p>

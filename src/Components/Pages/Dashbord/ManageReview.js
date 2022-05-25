@@ -3,7 +3,7 @@ import { useQuery } from 'react-query';
 import { toast } from 'react-toastify';
 
 const ManageReview = () => {
-    const { data: review, isLoading, refetch } = useQuery('reviews', () => fetch('http://localhost:4000/reviews', {
+    const { data: review, isLoading, refetch } = useQuery('reviews', () => fetch('http://localhost:4000/getreviews', {
         method: 'GET',
         headers: {
             'Content-type': 'application/json',
@@ -11,7 +11,7 @@ const ManageReview = () => {
         }
     }).then(res => res.json()))
 
-    console.log(review);
+    // console.log(review);
 
     const heldelDelete = (id) => {
 
@@ -40,8 +40,8 @@ const ManageReview = () => {
 
     return (
         <div>
-            <div class="overflow-x-auto">
-                <table class="table w-full">
+            <div className="overflow-x-auto">
+                <table className="table w-full">
                     <thead>
                         <tr>
                             <th></th>

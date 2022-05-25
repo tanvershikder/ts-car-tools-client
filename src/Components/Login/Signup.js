@@ -12,7 +12,7 @@ const Signup = () => {
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
-
+    const [showpass, setShowpass] = useState(false);
 
     const navigate = useNavigate();
 
@@ -110,7 +110,7 @@ const Signup = () => {
                                 <span className="label-text text-base font-semibold">Password</span>
                             </label>
                             <input
-                                type="password"
+                                type={showpass ? "text" : "password"}
                                 placeholder="Enter Your Password"
                                 className="input input-bordered w-full max-w-xs"
 
@@ -130,6 +130,7 @@ const Signup = () => {
                                 {errors.password?.type === 'minLength' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
                             </label>
                         </div>
+                        <input type="checkbox" name="" id="" onClick={() => setShowpass(!showpass)} /> <span>see password</span>
 
                         {signInerror}
 

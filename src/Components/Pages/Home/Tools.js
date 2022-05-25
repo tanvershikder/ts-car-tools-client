@@ -16,7 +16,7 @@ const Tools = () => {
     fetch(url)
       .then(res => res.json())
       .then(data => setProducts(data))
-  }, [products])
+  }, [])
 
   let tools = []
   if (products) {
@@ -28,7 +28,7 @@ const Tools = () => {
   const hendelparchas = tool => {
     navigate(`/purchase/${tool._id}`)
 
-    console.log(user);
+    // console.log(user);
   }
   return (
     <div className='lg:px-12 lg:m-5'>

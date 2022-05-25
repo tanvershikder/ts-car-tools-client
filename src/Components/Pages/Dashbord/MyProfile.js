@@ -7,7 +7,7 @@ import auth from '../../../Firebase.init';
 const MyProfile = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const [user] = useAuthState(auth)
-
+// console.log(user);
     const imagestorage_key = '8c9e657645bc7264c5c4e9c24848e699';
 
     const onSubmit = async (data) => {
@@ -25,7 +25,8 @@ const MyProfile = () => {
                 if (result.success) {
                     const img = result.data.url
                     const userinfo = {
-                        img: img
+                        img: img,
+                        phone:data.phone
                     }
                     console.log(userinfo);
                     // send to you database
@@ -81,6 +82,27 @@ const MyProfile = () => {
                             disabled
                         />
                     </div>
+
+                    <div className="form-control w-full max-w-xs">
+                        <label className="label">
+                            <span className="label-text text-base font-semibold">update Conatact Number</span>
+                        </label>
+                        <input
+                            type="text"
+                            className="input input-bordered w-full max-w-xs"
+
+                            {...register("phone", {
+                                required: {
+                                    value: true,
+                                    message: 'Image is Required'
+                                }
+                            })}
+                        />
+                        <label className="label">
+                            {errors.phone?.type === 'required' && <span className="label-text-alt text-red-500">{errors.phone.message}</span>}
+                        </label>
+                    </div>
+
                     <div className="form-control w-full max-w-xs">
                         <label className="label">
                             <span className="label-text text-base font-semibold">upload your image</span>
@@ -100,6 +122,7 @@ const MyProfile = () => {
                             {errors.name?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name.message}</span>}
                         </label>
                     </div>
+                    
 
                     <div className="flex flex-col w-full border-opacity-50">
                         <input type="submit" value="Update Your Profile" className="grid btn btn-primary rounded-box place-items-center input input-bordered w-full max-w-xs" />

@@ -33,7 +33,7 @@ const DeleteUserModal = ({deleteUser,setDeleteUser,refetch}) => {
                     <p className="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
                     <div className="modal-action">
                         <button className="btn btn-xs btn-error" onClick={hendelDelete}>Delete</button>
-                        <label for="user-modal" className="btn btn-xs">Cencel</label>
+                        <label htmlFor="user-modal" className="btn btn-xs">Cencel</label>
                     </div>
                 </div>
             </div>

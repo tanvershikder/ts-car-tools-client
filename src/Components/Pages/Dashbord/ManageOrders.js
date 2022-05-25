@@ -8,25 +8,26 @@ const ManageOrders = () => {
 
 
     useEffect(() => {
-        const url = "http://localhost:4000/orders";
+        const url = "https://vast-wave-21361.herokuapp.com/allorders";
 
         fetch(url, {
-            method: 'GET',
-            headers: {
-                'content-type': 'application/json',
-                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-            },
+            method: 'GET'
         })
             .then(res => res.json())
             .then(data => setorders(data))
     }, [orders])
+
+    let allorders = []
+    if(orders){
+        allorders= orders
+    }
 
     const hendeldelete = id => {
 
         const procide = window.confirm("are you sure ? you want to delete ?")
         if (procide) {
             console.log(id);
-            const url = `http://localhost:4000/orders/${id}`
+            const url = `https://vast-wave-21361.herokuapp.com/orders/${id}`
             fetch(url, {
                 method: "DELETE",
                 headers: {
@@ -47,7 +48,7 @@ const ManageOrders = () => {
     }
 
     const shiftinghendel = (_id) => {
-        fetch(`http://localhost:4000/shiftorders/${_id}`, {
+        fetch(`https://vast-wave-21361.herokuapp.com/shiftorders/${_id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json',
@@ -61,7 +62,7 @@ const ManageOrders = () => {
             })
     }
 
-    console.log(orders);
+    // console.log(orders);
     return (
         <div>
             <h2>order {orders.length}</h2>
@@ -81,7 +82,7 @@ const ManageOrders = () => {
 
                     <tbody>
                         {
-                            orders?.map((order, index) => <tr key={order._id} className='bg-slate-400'>
+                            allorders?.map((order, index) => <tr key={order._id} className='bg-slate-400'>
                                 <td className='p-3 text-sm'>{index + 1}</td>
                                 <td className='p-3 text-sm'>{order.name}</td>
                                 <td className='p-3 w-16 text-sm'>{order.toolName}</td>

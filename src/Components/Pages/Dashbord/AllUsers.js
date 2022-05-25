@@ -14,6 +14,8 @@ const MakeAdmin = () => {
         }, 
     }).then(res => res.json()))
 
+    console.log(users);
+
     return (
         <div>
             <h3 className="text-3xl text-blue-500">this is make admin {users?.length}</h3>
