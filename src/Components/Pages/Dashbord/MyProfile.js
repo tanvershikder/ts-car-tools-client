@@ -10,7 +10,7 @@ const MyProfile = () => {
 
     const imagestorage_key = '8c9e657645bc7264c5c4e9c24848e699';
 
-    const onSubmit = async(data)=>{
+    const onSubmit = async (data) => {
         const formData = new FormData();
         const image = data.image[0];
         formData.append('image', image);
@@ -19,44 +19,44 @@ const MyProfile = () => {
             method: 'POST',
             body: formData
         })
-        .then(res=>res.json())
-        .then(result =>{
-            console.log(result);
-            if(result.success){
-                const img = result.data.url
-                const userinfo ={
-                    img : img
+            .then(res => res.json())
+            .then(result => {
+                console.log(result);
+                if (result.success) {
+                    const img = result.data.url
+                    const userinfo = {
+                        img: img
+                    }
+                    console.log(userinfo);
+                    // send to you database
+                    fetch(`http://localhost:4000/userinfo/${user.email}`, {
+                        method: 'PUT',
+                        headers: {
+                            'content-type': 'application/json',
+                            authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                        },
+                        body: JSON.stringify(userinfo)
+                    })
+                        .then(res => res.json())
+                        .then(result => {
+                            console.log(result.result.modifiedCount);
+                            if (result.result.modifiedCount > 0) {
+                                toast.success('user update successfully')
+                                reset();
+                            }
+                            else {
+                                toast.error('Failed to update user')
+                            }
+                        })
                 }
-                console.log(userinfo);
-                // send to you database
-                fetch(`http://localhost:4000/userinfo/${user.email}`,{
-                    method:'PUT',
-                    headers:{
-                        'content-type':'application/json',
-                        authorization:`Bearer ${localStorage.getItem('accessToken')}`
-                    },
-                    body:JSON.stringify(userinfo)
-                })
-                .then(res=>res.json())
-                .then(result =>{
-                    console.log(result.result.modifiedCount);
-                    if(result.result.modifiedCount>0){
-                        toast.success('user update successfully')
-                        reset();
-                    }
-                    else{
-                        toast.error('Failed to update user')
-                    }
-                })
-            }
-        })
+            })
     }
 
     return (
-        <div>
-            <p className="text-3xl text-accent text-center">{user.displayName} User Details</p>
-            <div className='justify-center item-center text-center'>
+        <div className='flex justify-center items-center'>
+            <div className=''>
                 <form onSubmit={handleSubmit(onSubmit)} className=''>
+                    <p className="text-3xl text-accent text-center"><span className='text-secondary'>{user.displayName}</span> Details</p>
 
                     <div className="form-control w-full max-w-xs">
                         <label className="label">

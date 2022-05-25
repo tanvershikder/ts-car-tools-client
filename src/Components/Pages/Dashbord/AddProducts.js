@@ -84,7 +84,7 @@ const AddProducts = () => {
                         })}
                     />
                     <label className="label">
-                        {errors.name?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name.message}</span>}
+                        {errors.name?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name?.message}</span>}
                     </label>
                 </div>
                
@@ -105,7 +105,7 @@ const AddProducts = () => {
                         })}
                     />
                     <label className="label">
-                        {errors.decreption?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name.message}</span>}
+                        {errors.decreption?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name?.message}</span>}
                     </label>
                 </div>
                 <div className="form-control w-full max-w-xs">
@@ -125,7 +125,7 @@ const AddProducts = () => {
                         })}
                     />
                     <label className="label">
-                        {errors.price?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name.message}</span>}
+                        {errors.price?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name?.message}</span>}
                     </label>
                 </div>
                 <div className="form-control w-full max-w-xs">
@@ -145,7 +145,7 @@ const AddProducts = () => {
                         })}
                     />
                     <label className="label">
-                        {errors.quantity?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name.message}</span>}
+                        {errors.quantity?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name?.message}</span>}
                     </label>
                 </div>
                 <div className="form-control w-full max-w-xs">
@@ -165,7 +165,7 @@ const AddProducts = () => {
                         })}
                     />
                     <label className="label">
-                        {errors.minimum?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name.message}</span>}
+                        {errors.minimum?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name?.message}</span>}
                     </label>
                 </div>
 
@@ -185,7 +185,7 @@ const AddProducts = () => {
                         })}
                     />
                     <label className="label">
-                        {errors.name?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name.message}</span>}
+                        {errors.name?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name?.message}</span>}
                     </label>
                 </div>
 

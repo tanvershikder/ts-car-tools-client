@@ -1,7 +1,7 @@
 import React from 'react';
 import flag from '../../../Images/flag.png'
 import { RiFlagLine } from "@react-icons/all-files/ri/RiFlagLine";
-import { CgWebsite } from "@react-icons/all-files/cg/CgWebsite";
+import { VscTools } from "@react-icons/all-files/vsc/VscTools";
 import { IoIosPeople } from "@react-icons/all-files/io/IoIosPeople";
 import { BiLike } from "@react-icons/all-files/bi/BiLike";
 import bg from '../../../Images/bg.png'
@@ -30,9 +30,9 @@ const BusinessSumary = () => {
                 </div>
                 <div className="card max;w-lg">
                     <div className="card-body items-center text-center">
-                        <span className='text-accent text-7xl'><CgWebsite /></span>
+                        <span className='text-accent text-7xl'><VscTools /></span>
                         <h2 className="card-title text-5xl">200+</h2>
-                        <p className="text-2xl text-accent">Complete projects</p>
+                        <p className="text-2xl text-accent">Car Repair tools</p>
                     </div>
                 </div>
                 <div className="card max;w-lg">

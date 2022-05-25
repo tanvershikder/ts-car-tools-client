@@ -1,41 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
 import { Link } from 'react-router-dom';
 import auth from '../../../Firebase.init';
+import DeleteOrderModal from './DeleteOrderModal'
 
 const MyOrders = () => {
 
     const [user] = useAuthState(auth)
-    console.log(user.email);
 
-    const { data: orders, isLoading, refetch } = useQuery('tools', () => fetch(`http://localhost:4000/orders/${user.email}`).then(res => res.json()))
-    console.log(orders);
+    const [orders, setOrders] = useState([])
+    const [orderDelete,setOrderDelete] = useState(null)
 
 
-    const hendeldelete = id => {
-        console.log(id);
-        const procide = window.confirm("are you sure ? you want to delete ?")
-        if (procide) {
-            console.log(id);
-            const url = `http://localhost:4000/orders/${id}`
-            fetch(url, {
-                method: "DELETE",
-                headers: {
-                    'content-type': 'application/json',
-                    'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-                },
-            })
-                .then(res => res.json())
-                .then(data => {
-                    console.log(data)
-                    if (data.deletedCount > 0) {
-                        console.log("deleted");
-                        refetch()
-                    }
-                })
-        }
-    }
+    useEffect(() => {
+        const url = `http://localhost:4000/orders/${user.email}`;
+
+        fetch(url, {
+            method: 'GET',
+            headers: {
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => setOrders(data))
+    }, [orders])
+
+    
 
     return (
         <div>
@@ -49,7 +40,7 @@ const MyOrders = () => {
                             <th>Tool Name</th>
                             <th>order Quantity</th>
                             <th>Payment</th>
-                            <th>manage</th>
+                            <th>Transaction Id</th>
                         </tr>
                     </thead>
 
@@ -61,17 +52,31 @@ const MyOrders = () => {
                                 <td>{order.toolName}</td>
                                 <td>{order.quantity}</td>
                                 <td>
-                                    
+
                                     {(order.toolPrice && !order.paid) && <Link to={`/dashbord/payment/${order._id}`}><button className='btn btn-xs btn-success'>pay</button></Link>}
+
+                                    {
+                                        !order.paid &&
+                                        <label onClick={() => setOrderDelete(order)} for="cencel-order-modal" className="btn btn-xs btn-secondary">Cencel</label>
+
+                                    }
                                 </td>
                                 <td>
-                                    <button className='btn btn-xs btn-secondary' onClick={() => hendeldelete(order._id)}>Delete</button>
+                                    {
+                                        order.transactionId
+                                        &&
+                                        <p className='text-blue-700'>{order.transactionId}</p>
+                                    }
                                 </td>
                             </tr>)
                         }
                     </tbody>
                 </table>
             </div>
+            {orderDelete && <DeleteOrderModal
+                orderDelete={orderDelete}
+                setOrderDelete={setOrderDelete}
+            ></DeleteOrderModal>}
         </div>
     );
 };

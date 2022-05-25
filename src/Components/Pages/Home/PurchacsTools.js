@@ -114,15 +114,26 @@ const PurchacsTools = () => {
                     <p>Available :{tool?.quantity} Pices</p>
                     <form onSubmit={heldelBuy}>
                         <input type="text" name='name' ref={NameRef} placeholder="User Name" className="input input-bordered w-full max-w-xs my-3" value={user.displayName} disabled />
-                        <input type="text" name='email' ref={EmailRef} placeholder="user email" className="input input-bordered w-full max-w-xs my-3" value={user.email} disabled />
+
+                        <input type="text" name='email' ref={EmailRef} placeholder="user email" className="input input-bordered w-full max-w-xs my-3" value={user.email} disabled /><br />
+
+                        <label className='text-secondary'>Add Order Quantity</label>
                         <input type="text" name='quantity' defaultValue={minimum} ref={QuantityRef} placeholder={`Enter buying Quantity more then ${minimum} pices`} className="input input-bordered w-full max-w-xs my-3" required />
+
                         <p className="text-red-500">{error}</p>
+                        {/* <br /> */}
+
+                        <label className='text-secondary'>Add Order Location</label>
                         <input type="text" name='location' ref={LocationRef} placeholder="Add Location" className="input input-bordered w-full max-w-xs my-3" required />
+
+                        <br />
+                        <label className='text-secondary'>Add You Contact</label>
                         <input type="text" name='phone' ref={PhoneRef} placeholder="Phone Number" className="input input-bordered w-full max-w-xs my-3" required />
+
                         <div className="card-actions justify-end">
                             {(Number(tool?.quantity) < minimum)
                                 ?
-                                <Link to='/' className= "btn btn-primary" >out of stock</Link>
+                                <Link to='/' className="btn btn-primary" >out of stock</Link>
                                 :
                                 <button className="btn btn-primary" >Confirm order</button>}
                         </div>
