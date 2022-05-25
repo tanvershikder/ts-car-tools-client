@@ -64,9 +64,9 @@ const AddProducts = () => {
     }
 
     return (
-        <div className='flex justify-center items-center'>
-            <form onSubmit={handleSubmit(onSubmit)} className=''>
-                <h2 className="text-2xl text-center">Add new Product</h2>
+        <div className='flex justify-center items-center '>
+            <form onSubmit={handleSubmit(onSubmit)} className='bg-slate-100 p-10 lg:px-20 my-10 rounded'>
+                <h2 className="text-2xl text-center font-sans font-semibold">Add new Product</h2>
                 <div className="form-control w-full max-w-xs">
                     <label className="label">
                         <span className="label-text text-base font-semibold">Product Name</span>
@@ -75,7 +75,7 @@ const AddProducts = () => {
                         type="text"
                         placeholder="Enter Product Name"
                         className="input input-bordered w-full max-w-xs"
-
+                        required
                         {...register("name", {
                             required: {
                                 value: true,
@@ -96,7 +96,7 @@ const AddProducts = () => {
                         type="text"
                         placeholder="Enter Short Decreption"
                         className="input input-bordered w-full max-w-xs"
-
+                        required
                         {...register("decreption", {
                             required: {
                                 value: true,
@@ -105,7 +105,7 @@ const AddProducts = () => {
                         })}
                     />
                     <label className="label">
-                        {errors.decreption?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name?.message}</span>}
+                        {errors.name?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name?.message}</span>}
                     </label>
                 </div>
                 <div className="form-control w-full max-w-xs">
@@ -116,7 +116,7 @@ const AddProducts = () => {
                         type="text"
                         placeholder="Enter Product Price"
                         className="input input-bordered w-full max-w-xs"
-
+                        required
                         {...register("price", {
                             required: {
                                 value: true,
@@ -125,7 +125,7 @@ const AddProducts = () => {
                         })}
                     />
                     <label className="label">
-                        {errors.price?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name?.message}</span>}
+                        {errors.name?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name?.message}</span>}
                     </label>
                 </div>
                 <div className="form-control w-full max-w-xs">
@@ -136,7 +136,7 @@ const AddProducts = () => {
                         type="number"
                         placeholder="Enter Product Quantity"
                         className="input input-bordered w-full max-w-xs"
-
+                        required
                         {...register("quantity", {
                             required: {
                                 value: true,
@@ -145,7 +145,7 @@ const AddProducts = () => {
                         })}
                     />
                     <label className="label">
-                        {errors.quantity?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name?.message}</span>}
+                        {errors.name?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name?.message}</span>}
                     </label>
                 </div>
                 <div className="form-control w-full max-w-xs">
@@ -156,7 +156,7 @@ const AddProducts = () => {
                         type="number"
                         placeholder="Enter minimum order Quantity"
                         className="input input-bordered w-full max-w-xs"
-
+                        required
                         {...register("minimum", {
                             required: {
                                 value: true,
@@ -165,7 +165,7 @@ const AddProducts = () => {
                         })}
                     />
                     <label className="label">
-                        {errors.minimum?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name?.message}</span>}
+                        {errors.name?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name?.message}</span>}
                     </label>
                 </div>
 
@@ -176,7 +176,7 @@ const AddProducts = () => {
                     <input
                         type="file"
                         className="input input-bordered w-full max-w-xs"
-
+                        required
                         {...register("image", {
                             required: {
                                 value: true,
@@ -190,7 +190,7 @@ const AddProducts = () => {
                 </div>
 
                 <div className="flex flex-col w-full border-opacity-50">
-                    <input type="submit" value="Add Product" className="grid btn btn-primary rounded-box place-items-center input input-bordered w-full max-w-xs" />
+                    <input type="submit" value="Add New Product" className="grid btn btn-warning rounded-box place-items-center input input-bordered w-full max-w-xs" />
 
                 </div>
             </form>

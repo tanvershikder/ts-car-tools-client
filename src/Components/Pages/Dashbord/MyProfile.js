@@ -54,9 +54,9 @@ const MyProfile = () => {
     }
 
     return (
-        <div className='flex justify-center items-center'>
+        <div className='flex justify-center items-center bg-slate-200 '>
             <div className=''>
-                <form onSubmit={handleSubmit(onSubmit)} className=''>
+                <form onSubmit={handleSubmit(onSubmit)} className='py-10 bg-red-100 my-10 p-10'>
                     <p className="text-3xl text-accent text-center"><span className='text-secondary'>{user.displayName}</span> Details</p>
 
                     <div className="form-control w-full max-w-xs">

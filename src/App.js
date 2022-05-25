@@ -23,6 +23,7 @@ import AddReview from './Components/Pages/Dashbord/AddReview';
 import ManageReview from './Components/Pages/Dashbord/ManageReview';
 import NotFound from './Components/Shared/NotFound';
 import Payment from './Components/Pages/Dashbord/Payment';
+import Potfolio from './Components/Pages/Protfolio/Potfolio';
 
 function App() {
   return (
@@ -73,6 +74,7 @@ function App() {
           }></Route>
         </Route>
         <Route path='/blogs' element={<Blogs></Blogs>}></Route>
+        <Route path='/potfolio' element={<Potfolio></Potfolio>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/signup' element={<Signup></Signup>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>

@@ -8,7 +8,7 @@ const Dashbord = () => {
     const [user] = useAuthState(auth)
     const [admin] = UseAdmin(user)
     return (
-        <div className="drawer drawer-mobile">
+        <div className="drawer drawer-mobile lg:mt-10 ">
             <input id="dashbord-slider" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content ">
                 <Outlet></Outlet>

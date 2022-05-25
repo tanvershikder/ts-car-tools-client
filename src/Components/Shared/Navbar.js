@@ -12,18 +12,21 @@ const Navbar = () => {
         localStorage.removeItem("accessToken")
     };
 
-    const {pathname} = useLocation()
+    const { pathname } = useLocation()
 
     const menu = <>
         <li><Link to='/'>Home</Link></li>
-        <li><Link to='/blogs'>Blogs</Link></li>
+
 
         {
             user
             &&
             <li><Link to="/dashbord">Dashbord</Link></li>
-
+            
         }
+
+        <li><Link to='/blogs'>Blogs</Link></li>
+        <li><Link to='/potfolio'>Portfolio</Link></li>
 
         <li>{
             user
@@ -35,7 +38,7 @@ const Navbar = () => {
 
     </>
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar bg-base-100 sticky top-0 z-50 ">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex="0" className="btn btn-ghost lg:hidden">

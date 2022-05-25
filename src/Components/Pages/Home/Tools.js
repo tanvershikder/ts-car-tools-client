@@ -50,15 +50,15 @@ const Tools = () => {
       <h2 className="text-2xl text-secondary font-bold text-center py-5 ">Get Car Repair Tools </h2>
       <div className='grid grid-cols-1 lg:grid-cols-3 gap-4'>
         {
-          tools?.map(tool => <div key={tool._id} className="lg:max-w-lg bg-base-100 shadow-xl">
+          tools?.map(tool => <div key={tool._id} className="lg:max-w-lg bg-gray-200 shadow-xl bg-base-100">
             <figure className="px-10 pt-10">
               <img src={tool.img} alt="Shoes" className="rounded-xl h-48 w-64 " />
             </figure>
             <div className="card-body items-center text-center">
-              <h2 className="card-title">{tool.name}</h2>
-              <p>{tool.decreption}</p>
-              <p>Price :${tool.price} (per pice)</p>
-              <p>Avialble :{tool.quantity} Pices</p>
+              <h2 className="card-title uppercase ">{tool.name}</h2>
+              <p className='text-blue-600 uppercase'>{tool.decreption}</p>
+              <p className='text-orange-500'>Price :${tool.price} <span className='text-lime-600 font-bold'>(per pice)</span></p>
+              <p className='text-emerald-500 font-semibold'>Avialble :{tool.quantity} Pices</p>
               <p>Minimum Order :{tool.minimum} Pices</p>
               {
                 Number(tool?.quantity) < Number(tool?.minimum)
@@ -70,7 +70,7 @@ const Tools = () => {
                   ?
                   <button className="btn btn-primary" >Try Later</button>
                   :
-                  <button className="btn btn-primary  font-bold" onClick={() => hendelparchas(tool)}>Purchas<span className='text-pink-500 font-bold m-2 text-2xl'><FiShoppingCart /></span></button>
+                  <button className="btn btn-primary  font-bold" onClick={() => hendelparchas(tool)}>Purchas<span className='text-green-500 font-bold m-2 text-2xl'><FiShoppingCart /></span></button>
                 }
               </div>
             </div>

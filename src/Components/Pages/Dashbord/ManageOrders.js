@@ -68,7 +68,7 @@ const ManageOrders = () => {
             <h2>order {orders.length}</h2>
 
             <div className="overflow-x-auto">
-                <table className="table lg:w-full">
+                <table className="table table-zebra lg:w-full">
                     <thead>
                         <tr className=''>
                             <th className='p-3 w-24 text-xm tracking-wide'></th>

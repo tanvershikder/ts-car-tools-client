@@ -5,11 +5,11 @@ const Footer = () => {
     return (
         <div className='footer'>
             <div>
-                <h3 className='text-warning'>Ts-MaCbOoK</h3>
+                <h3 className='text-warning'>Ts-CaR-ToOlS</h3>
             </div>
             <div className='sub_footer'>
                 <div>
-                    <p>About Ts-MaCbOoK</p>
+                    <p>About Ts-Car-Tools</p>
                     <p>Read our Blogs</p>
                     <p>Sign Up to do get Offer</p>
                     <p>Add your comment</p>

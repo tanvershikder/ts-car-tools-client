@@ -34,7 +34,7 @@ const ManageProducts = () => {
         <div>
             <h3 className="text-2xl text-primary">this manager products {products?.length}</h3>
             <div className="overflow-x-auto">
-                <table className="table w-full">
+                <table className="table table-zebra w-full">
                     <thead>
                         <tr>
                             <th></th>

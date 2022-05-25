@@ -20,7 +20,7 @@ const MakeAdmin = () => {
         <div>
             <h3 className="text-3xl text-blue-500">this is make admin {users?.length}</h3>
             <div className="overflow-x-auto">
-                <table className="table w-full">
+                <table className="table table-zebra w-full">
                     <thead>
                         <tr>
                             <th></th>
