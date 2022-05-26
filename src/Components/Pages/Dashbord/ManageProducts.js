@@ -17,7 +17,7 @@ const ManageProducts = () => {
 
     
     useEffect(() => {
-        const url = "https://vast-wave-21361.herokuapp.com/allorders";
+        const url = "https://vast-wave-21361.herokuapp.com/products";
 
         fetch(url, {
             method: 'GET',
