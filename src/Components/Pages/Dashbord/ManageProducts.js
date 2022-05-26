@@ -13,21 +13,27 @@ const ManageProducts = () => {
     }).then(res => res.json()))
 
     const heldelDelete = (id) => {
-        fetch(`https://vast-wave-21361.herokuapp.com/products/${id}`, {
-            method: 'DELETE',
-            headers: {
-                'content-type': 'application/json',
-                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-            }
-        })
-            .then(res=>res.json())
-            .then(data=>{
-                
-                if(data.deletedCount>0){
-                    toast.success("product deletes success fully")
-                    refetch()
+
+        const procide = window.confirm("are you sure ? you want to delete ?")
+
+        if (procide) {
+            fetch(`https://vast-wave-21361.herokuapp.com/products/${id}`, {
+                method: 'DELETE',
+                headers: {
+                    'content-type': 'application/json',
+                    'authorization': `Bearer ${localStorage.getItem('accessToken')}`
                 }
             })
+                .then(res => res.json())
+                .then(data => {
+
+                    if (data.deletedCount > 0) {
+                        toast.success("product deletes success fully")
+                        refetch()
+                    }
+                })
+        }
+
     }
 
     return (
