@@ -18,7 +18,7 @@ const ChackoutFrom = ({ order }) => {
     const price = Number(toolPrice)
 
     useEffect(() => {
-        fetch('http://localhost:4000/create-payment-intent', {
+        fetch('https://vast-wave-21361.herokuapp.com/create-payment-intent', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -86,7 +86,7 @@ const ChackoutFrom = ({ order }) => {
                 transactionID: paymentIntent.id,
             }
 
-            fetch(`http://localhost:4000/orders/${_id}`, {
+            fetch(`https://vast-wave-21361.herokuapp.com/orders/${_id}`, {
                 method: 'PATCH',
                 headers: {
                     'content-type': 'application/json',

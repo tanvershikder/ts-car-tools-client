@@ -3,7 +3,7 @@ import { useQuery } from 'react-query';
 import { toast } from 'react-toastify';
 
 const ManageReview = () => {
-    const { data: review, isLoading, refetch } = useQuery('reviews', () => fetch('http://localhost:4000/getreviews', {
+    const { data: review, isLoading, refetch } = useQuery('reviews', () => fetch('https://vast-wave-21361.herokuapp.com/getreviews', {
         method: 'GET',
         headers: {
             'Content-type': 'application/json',
@@ -18,7 +18,7 @@ const ManageReview = () => {
         const procide = window.confirm("are you sure ? you want to delete ?")
 
         if (procide) {
-            fetch(`http://localhost:4000/review/${id}`, {
+            fetch(`https://vast-wave-21361.herokuapp.com/review/${id}`, {
                 method: 'DELETE',
                 headers: {
                     'content-type': 'application/json',

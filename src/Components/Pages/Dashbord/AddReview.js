@@ -35,7 +35,7 @@ console.log(user);
                     }
                     console.log(review);
 
-                    fetch('http://localhost:4000/review',{
+                    fetch('https://vast-wave-21361.herokuapp.com/review',{
                     method:'POST',
                     headers:{
                         'content-type':'application/json',
@@ -60,9 +60,9 @@ console.log(user);
     }
 
     return (
-        <div className=' text-center'>
-            <h3 className="text-2xl text-success font-bold lg:py-5">Give your Review</h3>
-            <form onSubmit={handleSubmit(onSubmit)}>
+        <div className='flex justify-center items-center'>
+            <form onSubmit={handleSubmit(onSubmit)} className='bg-slate-100 p-10 lg:px-20 my-10 rounded' >
+            <h3 className="text-2xl text-success font-bold lg:py-5 text-center">Give your Review</h3>
 
 
                 <div className='form-control w-full max-w-xs'>
@@ -85,7 +85,7 @@ console.log(user);
                 <div className='form-control w-full max-w-xs'>
                     <input
                         type="text"
-                        placeholder="Give Your Ratings"
+                        placeholder="Give Your Ratings 1-5"
                         className="input input-bordered input-primary w-full max-w-xs m-3"
 
                         {...register("ratings", {

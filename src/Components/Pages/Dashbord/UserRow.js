@@ -1,11 +1,11 @@
 import React from 'react';
 import { toast } from 'react-toastify';
 
-const UserRow = ({ user, refetch, setDeleteUser,index }) => {
+const UserRow = ({ user,  setDeleteUser,index }) => {
     
     const { email, role } = user;
     const hendelMakeAdmin = () => {
-        fetch(`http://localhost:4000/user/admin/${email}`, {
+        fetch(`https://vast-wave-21361.herokuapp.com/user/admin/${email}`, {
             method: 'PUT',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -19,7 +19,7 @@ const UserRow = ({ user, refetch, setDeleteUser,index }) => {
             .then(data => {
                 console.log(data);
                 if (data.result.modifiedCount > 0) {
-                    refetch()
+                   
                     toast.success('successfully made an admin')
                 }
             })

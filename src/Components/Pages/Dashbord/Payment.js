@@ -15,7 +15,7 @@ const Payment = () => {
     const { orderid } = useParams()
 
 
-    const { data: order, isLoading, refetch } = useQuery('tools', () => fetch(`http://localhost:4000/specificorders/${orderid}`,{
+    const { data: order, isLoading, refetch } = useQuery('tools', () => fetch(`https://vast-wave-21361.herokuapp.com/specificorders/${orderid}`,{
         method: 'GET',
         headers: {
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`

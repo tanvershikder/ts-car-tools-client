@@ -38,7 +38,7 @@ const AddProducts = () => {
                 }
                 console.log(product);
                 // send to you database
-                fetch('http://localhost:4000/products',{
+                fetch('https://vast-wave-21361.herokuapp.com/products',{
                     method:'POST',
                     headers:{
                         'content-type':'application/json',

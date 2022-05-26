@@ -6,7 +6,7 @@ const DeleteUserModal = ({ orderDelete, setOrderDelete }) => {
 
     const hendeldelete = () => {
 
-        const url = `http://localhost:4000/orders/${orderDelete._id}`
+        const url = `https://vast-wave-21361.herokuapp.com/orders/${orderDelete._id}`
         fetch(url, {
             method: "DELETE",
             headers: {

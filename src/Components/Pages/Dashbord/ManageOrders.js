@@ -93,7 +93,7 @@ const ManageOrders = () => {
                                         !order.paid 
                                             &&
                                             
-                                            <button className='btn btn-xs btn-secondary w-16 text-xm'>panding</button>
+                                            <button className='btn btn-xs btn-secondary w-16 text-xm'>UnPaid</button>
                                             
                                             
                                     }

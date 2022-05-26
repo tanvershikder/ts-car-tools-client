@@ -16,7 +16,7 @@ const PurchacsTools = () => {
     const PhoneRef = useRef('');
     const [error, setError] = useState(null)
 
-    const { data: tool, isLoading, refetch } = useQuery('tool', () => fetch(`http://localhost:4000/products/${id}`).then(res => res.json()));
+    const { data: tool, isLoading, refetch } = useQuery('tool', () => fetch(`https://vast-wave-21361.herokuapp.com/products/${id}`).then(res => res.json()));
 
 
     let updatequantity = Number(tool?.quantity);
@@ -61,7 +61,7 @@ const PurchacsTools = () => {
 
             console.log(quantity);
 
-            const url = `http://localhost:4000/products/${id}`
+            const url = `https://vast-wave-21361.herokuapp.com/products/${id}`
             console.log(url);
             fetch(url, {
                 method: "PUT",
@@ -78,7 +78,7 @@ const PurchacsTools = () => {
 
             // post order
 
-            fetch('http://localhost:4000/orders', {
+            fetch('https://vast-wave-21361.herokuapp.com/orders', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 const ManageProducts = () => {
-    const { data: products, isLoading, refetch } = useQuery('tools', () => fetch('http://localhost:4000/products', {
+    const { data: products, isLoading, refetch } = useQuery('tools', () => fetch('https://vast-wave-21361.herokuapp.com/products', {
         method: 'GET',
         headers: {
             'content-type': 'application/json',
@@ -13,7 +13,7 @@ const ManageProducts = () => {
     }).then(res => res.json()))
 
     const heldelDelete = (id) => {
-        fetch(`http://localhost:4000/products/${id}`, {
+        fetch(`https://vast-wave-21361.herokuapp.com/products/${id}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json',

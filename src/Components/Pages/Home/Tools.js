@@ -15,14 +15,14 @@ const Tools = () => {
   const [size, setSize] = useState(6);
 
   useEffect(() => {
-    fetch(`http://localhost:4000/products?page=${page}&size=${size}`)
+    fetch(`https://vast-wave-21361.herokuapp.com/products?page=${page}&size=${size}`)
       .then(res => res.json())
       .then(data => setProducts(data))
   }, [page, size])
 
 
   useEffect(() => {
-    fetch("http://localhost:4000/productCount")
+    fetch("https://vast-wave-21361.herokuapp.com/productCount")
       .then(res => res.json())
       .then(data => {
         // console.log(data);

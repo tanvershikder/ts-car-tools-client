@@ -4,7 +4,7 @@ import Loading from '../../Shared/Loading';
 
 const Review = () => {
 
-    const {data:review,isLoading} = useQuery('getreviews',()=>fetch('http://localhost:4000/getreviews').then(res=>res.json()))
+    const {data:review,isLoading} = useQuery('getreviews',()=>fetch('https://vast-wave-21361.herokuapp.com/getreviews').then(res=>res.json()))
 
     console.log(review);
     

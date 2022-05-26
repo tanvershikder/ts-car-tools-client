@@ -14,7 +14,7 @@ const MyOrders = () => {
 
 
     useEffect(() => {
-        const url = `http://localhost:4000/orders/${user.email}`;
+        const url = `https://vast-wave-21361.herokuapp.com/orders/${user.email}`;
 
         fetch(url, {
             method: 'GET',

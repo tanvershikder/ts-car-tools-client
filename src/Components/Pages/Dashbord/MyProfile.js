@@ -30,7 +30,7 @@ const MyProfile = () => {
                     }
                     console.log(userinfo);
                     // send to you database
-                    fetch(`http://localhost:4000/userinfo/${user.email}`, {
+                    fetch(`https://vast-wave-21361.herokuapp.com/userinfo/${user.email}`, {
                         method: 'PUT',
                         headers: {
                             'content-type': 'application/json',

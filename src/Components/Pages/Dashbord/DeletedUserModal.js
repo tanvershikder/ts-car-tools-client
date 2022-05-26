@@ -1,12 +1,12 @@
 import React from 'react';
 import { toast } from 'react-toastify';
 
-const DeleteUserModal = ({deleteUser,setDeleteUser,refetch}) => {
+const DeleteUserModal = ({deleteUser,setDeleteUser}) => {
     const { name,email } = deleteUser;
 
     const hendelDelete = () => {
 
-        fetch(`http://localhost:4000/user/admin/${email}`, {
+        fetch(`https://vast-wave-21361.herokuapp.com/user/admin/${email}`, {
             method: 'DELETE',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -19,7 +19,7 @@ const DeleteUserModal = ({deleteUser,setDeleteUser,refetch}) => {
                 if (data.deletedCount) {
                     toast.success(`User ${email} is deleted`)
                     setDeleteUser(null)
-                    refetch()
+                    
                 }
             })
 

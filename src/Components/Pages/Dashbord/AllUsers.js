@@ -1,20 +1,42 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useQuery } from 'react-query';
 import DeleteUserModal from './DeletedUserModal';
 import UserRow from './UserRow';
+import Loading from '../../Shared/Loading'
 
 const MakeAdmin = () => {
-    const [deleteUser,setDeleteUser] = useState(null)
+    const [user, setUser] = useState([])
+    const [deleteUser, setDeleteUser] = useState(null)
 
-    const { data:users, isLoading ,refetch} = useQuery('tools', () => fetch('http://localhost:4000/users',{
-        method: 'GET',
-        headers: {
-            'content-type': 'application/json',
-            'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-        }, 
-    }).then(res => res.json()))
+    // const { data:user, isLoading ,refetch} = useQuery('tools', () => fetch('https://vast-wave-21361.herokuapp.com/users',{
+    //     method: 'GET',
+    //     headers: {
+    //         'content-type': 'application/json',
+    //         'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+    //     }, 
+    // }).then(res => res.json()))
 
-    console.log(users);
+    useEffect(() => {
+        fetch(`https://vast-wave-21361.herokuapp.com/users`, {
+            method: 'GET',
+            headers: {
+                'content-type': 'application/json',
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            },
+        })
+            .then(res => res.json())
+            .then(data => setUser(data))
+    }, [user])
+
+    // if (isLoading) {
+    //     return <Loading></Loading>
+    // }
+
+    console.log(user);
+    let users = []
+    if (user) {
+        users = user;
+    }
 
     return (
         <div>
@@ -31,13 +53,12 @@ const MakeAdmin = () => {
                     </thead>
                     <tbody>
                         {
-                            users?.map((user,index)=><UserRow
-                                key={user._id} 
+                            users?.map((user, index) => <UserRow
+                                key={user._id}
                                 user={user}
-                                refetch={refetch}
                                 index={index}
                                 setDeleteUser={setDeleteUser}
-                                ></UserRow>)
+                            ></UserRow>)
                         }
                     </tbody>
                 </table>
@@ -45,7 +66,7 @@ const MakeAdmin = () => {
             {deleteUser && <DeleteUserModal
                 deleteUser={deleteUser}
                 setDeleteUser={setDeleteUser}
-                refetch={refetch}
+                
             ></DeleteUserModal>}
         </div>
     );
