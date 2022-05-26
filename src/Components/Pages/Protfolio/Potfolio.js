@@ -9,14 +9,14 @@ const Potfolio = () => {
     console.log(user);
     return (
         <div>
-            <h1 className='text-4xl text-center text-secondary m-5'>Heyy ,{user?.displayName} Welcome To My poor Potfolio</h1>
             <div>
-                <div class="hero min-h-screen bg-base-200 shadow-2xl ">
-                    <div class="hero-content flex-col lg:flex-row">
-                        <img src="https://scontent.fcgp7-1.fna.fbcdn.net/v/t39.30808-6/277171106_1712157049197866_5998410030193692133_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeHvYqmOxTHALXbBX-AFmfS_b6RjnMngZdNvpGOcyeBl0_lC7lCL4tKWZXRRR_i93FY9U1ECyB4Ov_Tf5NG6G9_5&_nc_ohc=ydMsl6lcIw8AX9NXlkb&_nc_ht=scontent.fcgp7-1.fna&oh=00_AT9TvC8FLk0ebiTv_0xoE2-9SbE0PlUyHngaRZgZlt4QfA&oe=629310E9" class="max-w-sm rounded-lg shadow-2xl" />
+                <div className="hero min-h-screen bg-base-200 shadow-2xl ">
+                    
+                    <div className="hero-content flex-col lg:flex-row">
+                        <img src="https://scontent.fcgp7-1.fna.fbcdn.net/v/t39.30808-6/277171106_1712157049197866_5998410030193692133_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeHvYqmOxTHALXbBX-AFmfS_b6RjnMngZdNvpGOcyeBl0_lC7lCL4tKWZXRRR_i93FY9U1ECyB4Ov_Tf5NG6G9_5&_nc_ohc=ydMsl6lcIw8AX9NXlkb&_nc_ht=scontent.fcgp7-1.fna&oh=00_AT9TvC8FLk0ebiTv_0xoE2-9SbE0PlUyHngaRZgZlt4QfA&oe=629310E9" className="max-w-sm rounded-lg shadow-2xl" />
                         <div className='m-5'>
-                            <h1 class="text-5xl font-bold ">Tanver Shikder</h1>
-                            <h1 class="text-2xl text-info">Hi, I am Tanver Shikder , I am a MERN Developer. </h1>
+                            <h1 className="text-5xl font-bold ">Tanver Shikder</h1>
+                            <h1 className="text-2xl text-info">Hi, I am Tanver Shikder , I am a MERN Developer. </h1>
                             <h1 className='text-1xl text-secondary'>I am A student of Computer Technology in Chattogram Polytechnic Institute</h1>
                             <h1>I am a student of Programming Hero Batch 5</h1>
 

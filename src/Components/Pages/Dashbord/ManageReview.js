@@ -29,8 +29,8 @@ const ManageReview = () => {
                 .then(data => {
 
                     if (data.deletedCount > 0) {
-                        toast.success("product deletes success fully")
                         refetch()
+                        toast.success("product deletes success fully")
                     }
                 })
         }

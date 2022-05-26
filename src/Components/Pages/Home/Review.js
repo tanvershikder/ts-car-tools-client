@@ -6,7 +6,7 @@ const Review = () => {
 
     const {data:review,isLoading} = useQuery('getreviews',()=>fetch('https://vast-wave-21361.herokuapp.com/getreviews').then(res=>res.json()))
 
-    console.log(review);
+    // console.log(review);
     
     if(isLoading){
         return <Loading></Loading>

@@ -31,9 +31,9 @@ const Payment = () => {
         <div className=''>
            
 
-            <div class="hero min-h-screen bg-base-200">
-                <div class="hero-content flex-col lg:flex-row">
-                    <div class="text-center lg:text-left lg:mx-10">
+            <div className="hero min-h-screen bg-base-200">
+                <div className="hero-content flex-col lg:flex-row">
+                    <div className="text-center lg:text-left lg:mx-10">
                         <p className='text-success text-3xl'> Hellow , {name}</p>
                         <p className='text-1xl text-secondary'>Your Order is almost done please Confirm your Payment</p>
                         <p className="font-bold">
@@ -41,7 +41,7 @@ const Payment = () => {
                         </p>
                         <p>please pay <span className='text-accent'>${toolPrice}</span></p>
                     </div>
-                    <div class="card w-full  max-w-md shadow-2xl bg-base-100">
+                    <div className="card w-full  max-w-md shadow-2xl bg-base-100">
                         <div className="card-body">
                             <Elements stripe={stripePromise} >
                                 <ChackoutFrom order={order} />
