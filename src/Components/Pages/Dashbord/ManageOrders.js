@@ -18,8 +18,8 @@ const ManageOrders = () => {
     }, [orders])
 
     let allorders = []
-    if(orders){
-        allorders= orders
+    if (orders) {
+        allorders = orders
     }
 
     const hendeldelete = id => {
@@ -48,18 +48,21 @@ const ManageOrders = () => {
     }
 
     const shiftinghendel = (_id) => {
-        fetch(`https://vast-wave-21361.herokuapp.com/shiftorders/${_id}`, {
-            method: 'PATCH',
-            headers: {
-                'content-type': 'application/json',
-                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-            }
+        const procide = window.confirm("Are shure about shifting ?")
+        if (procide) {
+            fetch(`https://vast-wave-21361.herokuapp.com/shiftorders/${_id}`, {
+                method: 'PATCH',
+                headers: {
+                    'content-type': 'application/json',
+                    'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                }
 
-        }).then(res => res.json())
-            .then(data => {
-                toast.success("Order get Shifting")
-                console.log(data);
-            })
+            }).then(res => res.json())
+                .then(data => {
+                    toast.success("Order get Shifting")
+                    console.log(data);
+                })
+        }
     }
 
     // console.log(orders);
@@ -90,12 +93,12 @@ const ManageOrders = () => {
                                 <td className='p-3 text-sm'>
 
                                     {
-                                        !order.paid 
-                                            &&
-                                            
-                                            <button className='btn btn-xs btn-secondary w-16 text-xm'>UnPaid</button>
-                                            
-                                            
+                                        !order.paid
+                                        &&
+
+                                        <button className='btn btn-xs btn-secondary w-16 text-xm'>UnPaid</button>
+
+
                                     }
                                     {
                                         order.paid

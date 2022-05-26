@@ -5,6 +5,7 @@ import { Link, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../../Firebase.init';
 import Loading from '../../Shared/Loading'
+import { CgShoppingBag } from "@react-icons/all-files/cg/CgShoppingBag";
 
 const PurchacsTools = () => {
     const [user] = useAuthState(auth)
@@ -18,9 +19,14 @@ const PurchacsTools = () => {
 
     const { data: tool, isLoading, refetch } = useQuery('tool', () => fetch(`https://vast-wave-21361.herokuapp.com/products/${id}`).then(res => res.json()));
 
+    if(isLoading){
+        return <Loading></Loading>
+    }
 
     let updatequantity = Number(tool?.quantity);
     const minimum = Number(tool?.minimum)
+
+    console.log(minimum);
 
     const heldelBuy = (event) => {
         event.preventDefault()
@@ -93,19 +99,19 @@ const PurchacsTools = () => {
                     if (data.insertedId) {
                         toast.success(`your order is wait for payment`)
                     }
-                    refetch()
                     event.target.reset()
+                    refetch()
                 })
         }
     }
 
-    if (isLoading) {
-        return <Loading></Loading>
-    }
+    // if (isLoading) {
+    //     return <Loading></Loading>
+    // }
 
     return (
         <div className='flex justify-center items-center lg:my-10'>
-            <div className="card card-compact w-96 bg-base-100 shadow-xl">
+            <div className="card card-compact w-96 bg-base-100 shadow-xl bg-blue-200">
                 <figure><img src={tool.img} alt="Shoes" /></figure>
                 <div className="card-body">
                     <h2 className="card-title">{tool.name}</h2>
@@ -120,7 +126,7 @@ const PurchacsTools = () => {
                         <label className='text-secondary'>Add Order Quantity</label>
                         <input type="text" name='quantity' defaultValue={minimum} ref={QuantityRef} placeholder={`Enter buying Quantity more then ${minimum} pices`} className="input input-bordered w-full max-w-xs my-3" required />
 
-                        <p className="text-red-500">{error}</p>
+                        <p className="text-red-500 font-bold">{error}</p>
                         {/* <br /> */}
 
                         <label className='text-secondary'>Add Order Location</label>
@@ -135,7 +141,7 @@ const PurchacsTools = () => {
                                 ?
                                 <Link to='/' className="btn btn-primary" >out of stock</Link>
                                 :
-                                <button className="btn btn-primary" >Confirm order</button>}
+                                <button className="btn btn-primary" >Confirm order <span className='ml-2 text-2xl text-cyan-500'> <CgShoppingBag/></span></button>}
                         </div>
                     </form>
                 </div>

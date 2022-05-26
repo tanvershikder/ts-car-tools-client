@@ -19,14 +19,14 @@ const Review = () => {
             <h2 className="text-secondary text-center py-5 font-bold text-2xl">All Review</h2>
             <div className='grid grid-cols-1 lg:grid-cols-3 gap-4'>
                 {
-                    review?.map(review => <div key={review._id} className="card w-96 bg-base-100 shadow-xl">
-                        <figure className="px-10 pt-10">
-                            <img src={review.img} alt="Shoes" className="rounded-xl h-48" />
+                    review?.map(review => <div key={review._id} className="card max:w-lg m-8  transform transition duration-500 hover:scale-110 bg-blue-400 shadow-xl">
+                        <figure className="">
+                            <img src={review.img} alt="Shoes" className="rounded-full h-48 w-48 mt-3" />
                         </figure>
                         <div className="card-body items-center text-center">
-                            <h2 className="card-title">{review.name}</h2>
-                            <p>{review.review}</p>
-                            <p>{review.ratings}</p>
+                            <h2 className="card-title uppercase text-white">{review.name}</h2>
+                            <p className='text-black text-1xl'>{review.review}</p>
+                            <p className='text-orange-600'>{review.ratings}</p>
                         </div>
                     </div>) 
               }

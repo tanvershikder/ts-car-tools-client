@@ -50,12 +50,12 @@ const Tools = () => {
       <h2 className="text-2xl text-secondary font-bold text-center py-5 ">Get Car Repair Tools </h2>
       <div className='grid grid-cols-1 lg:grid-cols-3 gap-4'>
         {
-          tools?.map(tool => <div key={tool._id} className="lg:max-w-lg bg-gray-200 shadow-xl bg-base-100">
-            <figure className="px-10 pt-10">
-              <img src={tool.img} alt="Shoes" className="rounded-xl h-48 w-64 " />
+          tools?.map(tool => <div key={tool._id} className="lg:max-w-lg transform transition duration-500 hover:scale-110 bg-gray-200 shadow-xl bg-base-100 lg:m-8  rounded">
+            <figure className="">
+              <img src={tool.img} alt="Products" className="rounded h-48 lg:w-72 w-full" />
             </figure>
             <div className="card-body items-center text-center">
-              <h2 className="card-title uppercase ">{tool.name}</h2>
+              <h2 className="card-title uppercase text-1xl text-orange-500">{tool.name}</h2>
               <p className='text-blue-600 uppercase'>{tool.decreption}</p>
               <p className='text-orange-500'>Price :${tool.price} <span className='text-lime-600 font-bold'>(per pice)</span></p>
               <p className='text-emerald-500 font-semibold'>Avialble :{tool.quantity} Pices</p>

@@ -24,6 +24,7 @@ import ManageReview from './Components/Pages/Dashbord/ManageReview';
 import NotFound from './Components/Shared/NotFound';
 import Payment from './Components/Pages/Dashbord/Payment';
 import Potfolio from './Components/Pages/Protfolio/Potfolio';
+import RequireUser from './Components/Hooks/RequireUser';
 
 function App() {
   return (
@@ -50,8 +51,16 @@ function App() {
             </RequireAdmin>
           }></Route>
           <Route path='myprofile' element={<MyProfile></MyProfile>}></Route>
-          <Route path='myorders' element={<MyOrders></MyOrders>}></Route>
-          <Route path='addreview' element={<AddReview></AddReview>}></Route>
+          <Route path='myorders' element={
+            <RequireUser>
+              <MyOrders></MyOrders>
+            </RequireUser>
+          }></Route>
+          <Route path='addreview' element={
+            <RequireUser>
+              <AddReview></AddReview>
+            </RequireUser>
+          }></Route>
           <Route path='manageAllorders' element={
             <RequireAdmin>
               <ManageOrders></ManageOrders>
