@@ -1,17 +1,36 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 const ManageProducts = () => {
-    const { data: products, isLoading, refetch } = useQuery('tools', () => fetch('https://vast-wave-21361.herokuapp.com/products', {
-        method: 'GET',
-        headers: {
-            'content-type': 'application/json',
-            'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-        }
-    }).then(res => res.json()))
 
+    const [products,setProducts] = useState([])
+
+    // const { data: products, isLoading, refetch } = useQuery('tools', () => fetch('https://vast-wave-21361.herokuapp.com/products', {
+    //     method: 'GET',
+    //     headers: {
+    //         'content-type': 'application/json',
+    //         'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+    //     }
+    // }).then(res => res.json()))
+
+    
+    useEffect(() => {
+        const url = "https://vast-wave-21361.herokuapp.com/allorders";
+
+        fetch(url, {
+            method: 'GET',
+            headers: {
+                        'content-type': 'application/json',
+                        'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                    }
+        })
+            .then(res => res.json())
+            .then(data => setProducts(data))
+    }, [products])
+
+    
     const heldelDelete = (id) => {
 
         const procide = window.confirm("are you sure ? you want to delete ?")
@@ -29,7 +48,7 @@ const ManageProducts = () => {
 
                     if (data.deletedCount > 0) {
                         toast.success("product deletes success fully")
-                        refetch()
+                        
                     }
                 })
         }
