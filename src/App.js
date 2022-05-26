@@ -34,9 +34,9 @@ function App() {
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/purchase/:id' element={
-          <RequireAuth>
+          <RequireUser>
             <PurchacsTools></PurchacsTools>
-          </RequireAuth>
+            </RequireUser>
         }></Route>
         <Route path='/dashbord' element={
           <RequireAuth>
