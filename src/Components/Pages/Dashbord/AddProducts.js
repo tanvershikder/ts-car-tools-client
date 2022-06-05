@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { useQuery } from 'react-query';
@@ -10,11 +10,13 @@ const AddProducts = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const [user] = useAuthState(auth);
     const navigae = useNavigate()
+    const [loading, setLoading] = useState(false);
 
 
     const imagestorage_key = '8c9e657645bc7264c5c4e9c24848e699';
 
-    const onSubmit =async data => {
+    const onSubmit = async data => {
+        setLoading(true)
         const formData = new FormData();
         const image = data.image[0];
         formData.append('image', image);
@@ -23,42 +25,44 @@ const AddProducts = () => {
             method: 'POST',
             body: formData
         })
-        .then(res=>res.json())
-        .then(result =>{
-            console.log(result);
-            if(result.success){
-                const img = result.data.url
-                const product ={
-                    name : data.name,
-                    decreption : data.decreption,
-                    quantity : data.quantity,
-                    minimum : data.minimum,
-                    price : data.price,
-                    img : img
+            .then(res => res.json())
+            .then(result => {
+
+                setLoading(false)
+
+                if (result.success) {
+                    const img = result.data.url
+                    const product = {
+                        name: data.name,
+                        decreption: data.decreption,
+                        quantity: data.quantity,
+                        minimum: data.minimum,
+                        price: data.price,
+                        img: img
+                    }
+                    console.log(product);
+                    // send to you database
+                    fetch('https://vast-wave-21361.herokuapp.com/products', {
+                        method: 'POST',
+                        headers: {
+                            'content-type': 'application/json',
+                            authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                        },
+                        body: JSON.stringify(product)
+                    })
+                        .then(res => res.json())
+                        .then(inserted => {
+                            console.log(inserted);
+                            if (inserted.insertedId) {
+                                toast.success('Product added successfully')
+                                reset();
+                            }
+                            else {
+                                toast.error('Failed to add the Product')
+                            }
+                        })
                 }
-                console.log(product);
-                // send to you database
-                fetch('https://vast-wave-21361.herokuapp.com/products',{
-                    method:'POST',
-                    headers:{
-                        'content-type':'application/json',
-                        authorization:`Bearer ${localStorage.getItem('accessToken')}`
-                    },
-                    body:JSON.stringify(product)
-                })
-                .then(res=>res.json())
-                .then(inserted =>{
-                    console.log(inserted);
-                    if(inserted.insertedId){
-                        toast.success('Product added successfully')
-                        reset();
-                    }
-                    else{
-                        toast.error('Failed to add the Product')
-                    }
-                })
-            }
-        })
+            })
 
 
     }
@@ -87,12 +91,12 @@ const AddProducts = () => {
                         {errors.name?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name?.message}</span>}
                     </label>
                 </div>
-               
+
                 <div className="form-control w-full max-w-xs">
                     <label className="label">
                         <span className="label-text text-base font-semibold">Short Decreption</span>
                     </label>
-                    <input
+                    <textarea
                         type="text"
                         placeholder="Enter Short Decreption"
                         className="input input-bordered w-full max-w-xs"
@@ -170,12 +174,15 @@ const AddProducts = () => {
                 </div>
 
                 <div className="form-control w-full max-w-xs">
-                    <label className="label">
-                        <span className="label-text text-base font-semibold">Products photo</span>
-                    </label>
+                    <label for="files" className={
+                        loading
+                            ? "btn btn-secondary loading mt-5 w-full max-w-xs"
+                            : "btn btn-accent mt-5  w-full max-w-xs "
+                    }>Upload product Image</label>
                     <input
                         type="file"
-                        className="input input-bordered w-full max-w-xs"
+                        id="files"
+                        className="input hidden input-bordered w-full max-w-xs"
                         required
                         {...register("image", {
                             required: {

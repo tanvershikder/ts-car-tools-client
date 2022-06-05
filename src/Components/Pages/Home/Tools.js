@@ -85,10 +85,6 @@ const Tools = () => {
               onClick={() => setPage(number)}
             >{number + 1}</button>)
         }
-        {/* <select className='sizepage' onChange={e => setSize(e.target.value)}>
-          <option value="5" >6</option>
-          <option value="3" selected>3</option>
-        </select> */}
       </div>
     </div>
   );

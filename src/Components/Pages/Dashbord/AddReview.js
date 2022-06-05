@@ -1,5 +1,5 @@
 import { async } from '@firebase/util';
-import React from 'react';
+import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
@@ -9,9 +9,14 @@ const AddReview = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const imagestorage_key = '8c9e657645bc7264c5c4e9c24848e699';
     const [user] = useAuthState(auth)
-console.log(user);
-    const onSubmit = async (data) => {
+    const [loading, setLoading] = useState(false);
 
+
+    // var current = new Date();
+    // console.log(current. getHours());
+
+    const onSubmit = async (data) => {
+        setLoading(true);
         const formData = new FormData();
         const image = data.image[0];
         formData.append('image', image);
@@ -22,6 +27,7 @@ console.log(user);
         })
             .then(res => res.json())
             .then(result => {
+                setLoading(false);
                 // console.log(data);
                 if(result.success){
                     const img = result.data.url
@@ -101,7 +107,11 @@ console.log(user);
                 </div>
 
                 <div className='form-control w-full max-w-xs'>
-                    <label for="files" className="btn w-full max-w-xs m-3">Upload Your Image</label>
+                    <label for="files" className={
+                  loading
+                    ? "btn btn-secondary loading mt-5 w-full max-w-xs m-3"
+                    : "btn btn-accent mt-5  w-full max-w-xs m-3"
+                }>Upload Your Image</label>
                     <input
                         type="file"
                         id="files"
