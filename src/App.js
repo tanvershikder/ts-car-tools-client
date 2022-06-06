@@ -25,6 +25,7 @@ import NotFound from './Components/Shared/NotFound';
 import Payment from './Components/Pages/Dashbord/Payment';
 import Potfolio from './Components/Pages/Protfolio/Potfolio';
 import RequireUser from './Components/Hooks/RequireUser';
+import UpdateProduct from './Components/Pages/Dashbord/UpdateProduct'
 
 function App() {
   return (
@@ -48,6 +49,11 @@ function App() {
           <Route path='addproducts' element={
             <RequireAdmin>
               <AddProducts></AddProducts>
+            </RequireAdmin>
+          }></Route>
+          <Route path='updateproducts/:productId' element={
+            <RequireAdmin>
+              <UpdateProduct></UpdateProduct>
             </RequireAdmin>
           }></Route>
           <Route path='myprofile' element={<MyProfile></MyProfile>}></Route>

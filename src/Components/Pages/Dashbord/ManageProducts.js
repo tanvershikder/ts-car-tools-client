@@ -67,7 +67,7 @@ const ManageProducts = () => {
                             <th>price per pice</th>
                             <th>order Quantity</th>
                             <th>Manage</th>
-                            <th>Add Product</th>
+                            <th>Update Product</th>
                         </tr>
                     </thead>
 
@@ -83,7 +83,7 @@ const ManageProducts = () => {
                                     {/* {(appointment.price && !appointment.paid) && <Link to={`payment/${appointment._id}`}><button className='btn btn-xs btn-success'>pay</button></Link>} */}
                                 </td>
                                 <td>
-                                    <Link className='btn btn-outline' to='/dashbord/addproducts'>Add Product</Link>
+                                    <Link className='btn btn-outline' to={`/dashbord/updateproducts/${product._id}`}>Update Product</Link>
                                 </td>
                             </tr>)
                         }
