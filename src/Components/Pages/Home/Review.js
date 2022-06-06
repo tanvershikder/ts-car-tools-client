@@ -13,24 +13,24 @@ const Review = () => {
         return <Loading></Loading>
     }
 
-    // console.log(review);
-    let reverseArray = [...review]?.reverse()
+    let reverseArrayall = [...review]?.reverse()
+    const reverseArray = reverseArrayall.slice(0,3)
     console.log(reverseArray);
 
 
     return (
         <div>
             <h2 className="text-secondary text-center py-5 font-bold text-2xl">All Review</h2>
-            <div className='grid grid-cols-1 lg:grid-cols-3 gap-4'>
+            <div className='grid grid-cols-1 lg:grid-cols-3 gap-4 lg:p-12 bg-blue-50'>
                
                 {
-                    reverseArray?.map(review => <div key={review._id} className="card max:w-lg m-8  transform transition duration-500 hover:scale-110 bg-blue-400 shadow-xl">
+                    reverseArray?.map(review => <div key={review._id} className="card max:w-lg mx-8  transform transition duration-500 hover:scale-110 bg-orange-100 shadow-xl">
                         <figure className="">
                             <img src={review.img} alt="Shoes" className="rounded-full h-48 w-48 mt-3" />
                         </figure>
                         <div className="card-body items-center text-center">
-                            <h2 className="card-title uppercase text-white">{review.name}</h2>
-                            <p className='text-black text-1xl'>{review.review}</p>
+                            <h2 className="card-title capitalize text-gray">{review.name}</h2>
+                            <p className='capitalize text-amber-500 text-1xl'>{review.review}</p>
                             <p className='text-orange-600'>{review.ratings}</p>
                         </div>
                     </div>)
