@@ -19,6 +19,8 @@ const PurchacsTools = () => {
 
     const { data: tool, isLoading, refetch } = useQuery('tool', () => fetch(`https://vast-wave-21361.herokuapp.com/products/${id}`).then(res => res.json()));
 
+    console.log(tool);
+
     if(isLoading){
         return <Loading></Loading>
     }
@@ -41,6 +43,7 @@ const PurchacsTools = () => {
 
         const bookingDetails = {
             toolName: tool.name,
+            toolId: id,
             toolPrice: tool.price,
             name: name,
             email: email,

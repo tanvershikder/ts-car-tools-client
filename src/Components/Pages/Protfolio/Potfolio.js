@@ -3,17 +3,20 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
 import auth from '../../../Firebase.init';
 import { AiOutlineArrowRight } from "@react-icons/all-files/ai/AiOutlineArrowRight";
+import myImg from "../../../Images/myimg (1).jpg"
 
 const Potfolio = () => {
     const [user] = useAuthState(auth)
     console.log(user);
+
     return (
         <div>
             <div>
                 <div className="hero min-h-screen bg-base-200 shadow-2xl ">
                     
                     <div className="hero-content flex-col lg:flex-row">
-                        <img src="https://scontent.fcgp7-1.fna.fbcdn.net/v/t39.30808-6/277171106_1712157049197866_5998410030193692133_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeHvYqmOxTHALXbBX-AFmfS_b6RjnMngZdNvpGOcyeBl0_lC7lCL4tKWZXRRR_i93FY9U1ECyB4Ov_Tf5NG6G9_5&_nc_ohc=ydMsl6lcIw8AX9NXlkb&_nc_ht=scontent.fcgp7-1.fna&oh=00_AT9TvC8FLk0ebiTv_0xoE2-9SbE0PlUyHngaRZgZlt4QfA&oe=629310E9" className="max-w-sm rounded-lg shadow-2xl" />
+                        <img src={myImg} className='h-96 w-96' alt='Myimg'/>
+                        {/* <img src="https://ibb.co/NyyPd4x" alt='Myimg' className='' /> */}
                         <div className='m-5'>
                             <h1 className="text-5xl font-bold ">Tanver Shikder</h1>
                             <h1 className="text-2xl text-info">Hi, I am Tanver Shikder , I am a MERN Developer. </h1>
@@ -36,7 +39,7 @@ const Potfolio = () => {
                                 <p>API</p>
                                 <p>JWT</p>
                             </div>
-
+                        <a href="https://tanver-portfolio.web.app/" target="blank" className='btn btn-primary'> Potfolio <AiOutlineArrowRight className='text-3xl'/></a>
                         </div>
                     </div>
                 </div>

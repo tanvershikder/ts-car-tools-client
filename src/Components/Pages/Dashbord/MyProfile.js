@@ -91,7 +91,7 @@ const MyProfile = () => {
                             type="text"
                             className="input input-bordered w-full max-w-xs"
 
-                            {...register("phone", {
+                            {...register("photo", {
                                 required: {
                                     value: true,
                                     message: 'Image is Required'
@@ -99,7 +99,7 @@ const MyProfile = () => {
                             })}
                         />
                         <label className="label">
-                            {errors.phone?.type === 'required' && <span className="label-text-alt text-red-500">{errors.phone.message}</span>}
+                            {errors.photo?.type === 'required' && <span className="label-text-alt text-red-500">{errors.photo.message}</span>}
                         </label>
                     </div>
 

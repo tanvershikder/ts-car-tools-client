@@ -174,7 +174,7 @@ const AddProducts = () => {
                 </div>
 
                 <div className="form-control w-full max-w-xs">
-                    <label for="files" className={
+                    <label htmlfor="files" className={
                         loading
                             ? "btn btn-secondary loading mt-5 w-full max-w-xs"
                             : "btn btn-accent mt-5  w-full max-w-xs "

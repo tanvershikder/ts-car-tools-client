@@ -1,8 +1,24 @@
 import React from 'react';
+import { useEffect } from 'react';
 import { toast } from 'react-toastify';
+import { useQuery } from 'react-query';
+import Loading from '../../Shared/Loading';
+import { useState } from 'react';
 
 const DeleteUserModal = ({ orderDelete, setOrderDelete }) => {
     // const { name,email } = orderDelete;
+
+    const [productDetails, setProductsDetails] = useState()
+
+    useEffect(() => {
+        fetch(`https://vast-wave-21361.herokuapp.com/products/${orderDelete.toolId}`)
+            .then(res => res.json())
+            .then(data => setProductsDetails(data))
+
+    }, [orderDelete.toolId])
+
+    console.log(orderDelete);
+
 
     const hendeldelete = () => {
 
@@ -20,6 +36,27 @@ const DeleteUserModal = ({ orderDelete, setOrderDelete }) => {
                 if (data.deletedCount > 0) {
                     toast.success("Delete Order successfully")
                     setOrderDelete(null)
+
+                    // update quantity 
+                    let updatequantity = Number(productDetails.quantity) + Number(orderDelete.quantity)
+
+                    const quantity = { updatequantity }
+
+                    console.log(quantity);
+
+                    const url = `https://vast-wave-21361.herokuapp.com/products/${orderDelete.toolId}`
+                    console.log(url);
+                    fetch(url, {
+                        method: "PUT",
+                        headers: {
+                            'Content-type': 'application/json',
+                        },
+                        body: JSON.stringify(quantity)
+
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                        })
                 }
             })
     }
